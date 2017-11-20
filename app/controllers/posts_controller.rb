@@ -1,17 +1,9 @@
 class PostsController < ApplicationController
-<<<<<<< HEAD
 before_action :authenticate_user!
 before_action :set_post, only:[:show, :edit, :update, :destroy]
 
   def show
     pp @comment = @post.postcomments
-=======
-
-before_action :set_post, only:[:show, :edit, :update, :destroy]
-
-  def show
-    @comment = @post.postcomments
->>>>>>> 7ab7f51b86b358237ef4b1be614d5d31584548b3
   end
 
   def new

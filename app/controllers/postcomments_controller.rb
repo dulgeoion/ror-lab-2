@@ -4,23 +4,18 @@ before_action :authenticate_user!
   def create
   	params[:postcomment][:post_id] = params[:post_id]
   	params[:postcomment][:user_id] = current_user.id
-  	Postcomment.create(comment_params)
-  	redirect_to post_path(params[:post_id])
+    @comment = Postcomment.create(comment_params)
+    if @comment.save
+  	   redirect_to post_path(params[:post_id])
+    else
+      @comment.errors.full_messages.each do |msg|
+        @msg = msg
+      end
+      flash[:notice] = "#{@msg}"
+      redirect_to post_path(params[:post_id])
+    end
   end
 
-<<<<<<< HEAD
-=======
-  def edit
-  	
-  	redirect_to post_path(params[:post_id])
-  end
-
-  def destroy
-  	
-  	redirect_to post_path(params[:post_id])
-  end
-
->>>>>>> 7ab7f51b86b358237ef4b1be614d5d31584548b3
 private
 
 	def comment_params
