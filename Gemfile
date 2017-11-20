@@ -36,8 +36,11 @@ gem 'activeadmin'
 #devise
 gem 'devise'
 gem 'client_side_validations'
+
+# uploader
 gem "paperclip"
 
+# bootstrap
 gem 'bootstrap-sass', '~>3.3.6'
 gem 'jquery-rails'
 
