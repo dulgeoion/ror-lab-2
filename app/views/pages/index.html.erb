@@ -1,10 +1,42 @@
-<%= link_to "Create new post", new_post_path  %>
+<<<<<<< HEAD
+<%= link_to "Create New Post", new_post_path , class: "btn btn-default"%>
+=======
+<div class="conteiner-fluid">
+>>>>>>> 7ab7f51b86b358237ef4b1be614d5d31584548b3
 
+
+	
 <% @posts.each do |post| %>
-  <h1><%= post.title  %></h1>
-  <%= post.body %>
-  <% if current_user != nil and current_user.id == post.user_id %>
-    <%= link_to "edit", edit_post_path(post.id) %>
-    <%= link_to "delete", post_path(post.id), method: :delete %>
-  <% end %>
+<<<<<<< HEAD
+	<h1><%= link_to post.title , post_path(post.id)%></h1>
+	<p>
+		Autor:<%= post.user.nickname %> |
+		Creeated at:<%= post.created_at %>
+		Update at:<%= post.updated_at %>
+	</p>
+	<p><%= post.body %></p>
+=======
+<div class="center-container">
+	<div class="col-md-4">
+	
+	<h1><%= link_to post.title , post_path(post.id)%></h1>
+	<p>
+		Autor:<%= post.user.nickname %> <br>
+		<p><%= post.body %></p>
+		Creeated at:<%= post.created_at %> <br>
+		Update at:<%= post.updated_at %> <br>
+	</p>
+>>>>>>> 7ab7f51b86b358237ef4b1be614d5d31584548b3
+	<% if current_user != nil and current_user.id == post.user_id %>
+		<%= link_to "Edit", edit_post_path(post.id) %>
+		<%= link_to "Delete", post_path(post.id), data: {confim: 'Are you sure?'}, method: :delete %>
+	<% end %>
+	</div>
+</div>
 <% end %>
+
+	<div class="right-conteiner">
+		<%= link_to "Create New Post", new_post_path , class: "btn btn-default"%>
+	</div>
+	
+</div>
