@@ -15,4 +15,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require rails.validations
+//= require tinymce-jquery
 //= require_tree .

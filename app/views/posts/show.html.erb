@@ -6,7 +6,7 @@
 	Creeated at:<%= @post.created_at %> |
 	Update at:<%= @post.updated_at %>
 </p>
-<p><%= @post.body %></p>
+<p><%= sanitize(@post.body) %></p>
 
 <% @comment.each do |comment| %>
 	<%= image_tag comment.user.avatar.url, width: 30, height: 30 %>
