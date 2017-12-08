@@ -15,7 +15,9 @@
     <%= image_tag image.image.url, class: "img-responsive img-rounded", width: 200, height: 300 %>
     <br />
     <%= image.user.nickname %>
-    </div>
+    <br />
+    <%= link_to "Delete", image_path(image.id), data: {confim: 'Are you sure?'}, method: :delete %>
+     </div>
   <% end %>
 <% end %>
 </div>
