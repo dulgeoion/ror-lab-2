@@ -1,62 +1,38 @@
-class PhotosController < ApplicationController
-before_action :authenticate_user!
-before_action :photo_set, only:[:show, :edit, :update, :destroy, :vote]
+class ImagesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :image_set, only:[:destroy]
 
   def index
-    @photos = Photo.all
-    @like = {}
-    @photos.each do |photo|
-      @votes = Vote.where(photo_id: photo.id).sum(:like)
-      @like[photo.id] = @votes
-    end
+    @images = Image.all
   end
 
   def new
-    @photo = Photo.new
   end
 
   def create
-    params[:photo][:user_id] = current_user.id
-    params[:photo][:category_id] = params[:category_id]
-    @photo = Photo.create(photo_params)
-    redirect_to photos_path
-  end
+    @user = current_user
 
-  def edit
-  end
-
-  def update
-    params[:photo][:user_id] = @photo.user_id
-    params[:photo][:category_id] = @photo.category_id
-    @photo.update(photo_params)
-    redirect_to 'photos'
+    if params[:images]
+      params[:images].each {|image|
+        @files = @user.images.create(image: image)
+      }
+    end
+    redirect_to images_path
   end
 
   def destroy
-    @photo.destroy
-    redirect_to photos_path
-  end
-
-  def vote
-    @photo = Photo.find(params[:id])
-    @vote = Vote.where(user_id: current_user.id, photo_id: @photo.id).first
-    if @vote == nil
-       @like = 1
-       Vote.create(user_id: current_user.id, photo_id: @photo.id, like: @like)
-    elsif @vote.like == 0
-         @vote.update(like: @vote.like + 1)
-    else
-       @vote.update(like: @vote.like - 1)
-    end
-    redirect_to photos_path
+    @image.destroy
+    redirect_to images_path
   end
 
 private
 
-  def photo_params
-    params.require(:photo).permit(:user_id, :category_id, :name, :photo)
+  def image_params
+    params.require(:images).permit(:user_id, :image)
   end
 
-  def photo_set
-    pp @photo = Photo.find(params[:id])
+  def image_set
+     pp @image = Image.find(params[:id])
   end
+end
+
