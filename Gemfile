@@ -26,25 +26,31 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-#active admin
+# active admin
 gem 'activeadmin'
-#devise
+
+# devise
 gem 'devise'
 gem 'client_side_validations'
-gem 'tinymce-rails'
-gem 'carrierwave', '~> 1.0'
 
 # uploader
-gem "paperclip"
+gem 'paperclip'
+gem 'carrierwave'
 
 # bootstrap
 gem 'bootstrap-sass', '~>3.3.6'
 gem 'jquery-rails'
+
+# text format
+gem 'tinymce-rails'
+
+# google_drive for carrierwave
+# gem 'carrierwave-google_drive'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -53,7 +59,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+  gem 'sqlite3'
 end
 
 group :development do

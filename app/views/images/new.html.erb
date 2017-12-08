@@ -1,0 +1,7 @@
+<div class="container">
+<%= form_for :images, url: images_path, class: "img-responsive", html: { multipart: true } do |f|%>
+
+<%= render 'images/form' , f:f %>
+
+<% end %>
+</div>

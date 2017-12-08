@@ -1,0 +1,23 @@
+<div class="container" >
+	<div align="center">
+
+<%= link_to "upload new photo", new_photo_path, class: "btn btn-default" %>
+<%= link_to "upload multiple photo", new_image_path, class: "btn btn-default" %>
+</div>
+
+<div class="image-gallery"> 
+
+<% if @images == [] %>
+  There are no images
+<% else %>
+  <% @images.each do |image| %>
+  <div class="image">
+    <%= image_tag image.image.url, class: "img-responsive img-rounded", width: 200, height: 300 %>
+    <br />
+    <%= image.user.nickname %>
+    </div>
+  <% end %>
+<% end %>
+</div>
+
+</div>
